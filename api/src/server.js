@@ -14,7 +14,7 @@ const key = process.env.API_GEMINI_AI;
 
 if (!key) {
     console.error("API_GEMINI_AI environment variable is not set.");
-    process.exit(1);
+    // process.exit(1);
 }
 
 const genAI = new GoogleGenerativeAI(key);

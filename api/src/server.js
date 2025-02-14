@@ -14,12 +14,10 @@ const key = process.env.API_GEMINI_AI;
 
 if (!key) {
     console.error("API_GEMINI_AI environment variable is not set.");
-    // process.exit(1);
 }
 
 const genAI = new GoogleGenerativeAI(key);
 
-// In-memory storage for conversation history
 const conversationHistory = {};
 
 app.get("/" , (req, res) => {
@@ -40,15 +38,12 @@ app.post("/dsa_tutor", async (req, res) => {
         return res.status(400).json({ error: "Prompt and userId are required" });
     }
 
-    // Initialize conversation history for the user if it doesn't exist
     if (!conversationHistory[userId]) {
         conversationHistory[userId] = [{ role : "user" , content : dsa_tutor + " "}];
     }
 
-    // Append the new prompt to the user's conversation history
     conversationHistory[userId].push({ role: "user", content:  prompt });
 
-    // Create a context for the model by joining previous messages
     const context = conversationHistory[userId]
         .map((msg) => `${msg.role === "user" ? "User" : "Tutor"}: ${msg.content}`)
         .join("\n");
@@ -65,7 +60,6 @@ app.post("/dsa_tutor", async (req, res) => {
             fullResponse += chunkText;
         }
 
-        // Append the tutor's response to the conversation history
         conversationHistory[userId].push({ role: "tutor", content: fullResponse });
         res.end();
     } catch (error) {
@@ -75,5 +69,5 @@ app.post("/dsa_tutor", async (req, res) => {
 });
 
 app.listen(8000, () => {
-    console.log("✅ Server running on http://localhost:8000");
+    console.log("Server running on 8000");
 });

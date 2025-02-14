@@ -36,7 +36,7 @@ const Chat: React.FC<ChatProps> = ({ topic }) => {
         setMessages((prev) => [...prev, { type: "user", content: text }]);
 
         try {
-            const response = await fetch("https://dsa-tutorsapi.vercel.app/dsa_tutor", {
+            const response = await fetch("https://  /dsa_tutor", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: text, userId: id }),

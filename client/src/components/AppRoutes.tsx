@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { topics } from './Topics'
+// import { topics } from './Topics'
 import Chat from './Chat'
 import AllTutors from './AllTutors'
 import Footer from './Footer'
@@ -9,11 +9,11 @@ const AppRoutes = () => {
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<AllTutors/>} />
-            {
+            <Route path={"/" + "hashmap"} key={0} element={< Chat topic={"hashmap"} />} />
+            {/* {
                 topics.map( (topic , ind) => (
-                    <Route path={"/" + topic} key={ind} element={< Chat topic={topic} />} />
                 ))
-            }
+            } */}
         </Routes>
         <Footer/>
     </BrowserRouter>

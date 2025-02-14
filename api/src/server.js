@@ -27,6 +27,14 @@ app.get("/" , (req, res) => {
     })
 })
 
+app.get("/removeme", (req, res) => {
+    const { userId } = req.query;
+    delete conversationHistory[userId];
+    res.status(200).json({
+        success: true,
+    });
+});
+
 app.post("/dsa_tutor", async (req, res) => {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");

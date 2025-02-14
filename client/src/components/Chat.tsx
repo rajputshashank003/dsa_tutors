@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { v4 as uuidv4 } from 'uuid';
 import TopicTitle from "./TopicTitle";
 import InputPrompt from "./InputPrompt";
+import { backend_local, backend_vercel } from "../utils/backend";
 
 interface ChatProps {
     topic: string;
@@ -36,7 +37,7 @@ const Chat: React.FC<ChatProps> = ({ topic }) => {
         setMessages((prev) => [...prev, { type: "user", content: text }]);
 
         try {
-            const response = await fetch("https://dsa-tutors-api.vercel.app/dsa_tutor", {
+            const response = await fetch(backend_vercel + "/dsa_tutor", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: text, userId: id }),
@@ -85,6 +86,20 @@ const Chat: React.FC<ChatProps> = ({ topic }) => {
     };
     useEffect(() => {
         sendMessage(topic);
+    }, []);
+
+    useEffect(() => {
+        return () => {
+          fetch( backend_vercel + "/removeme?userId=" + id)
+            .then((response) => {
+              if (!response.ok) {
+                console.error("Failed to call removeme API");
+              }
+            })
+            .catch((error) => {
+              console.error("Error calling removeme API:", error);
+            });
+        };
     }, []);
 
     return (

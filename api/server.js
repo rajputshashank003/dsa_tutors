@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { dsa_tutor } from "./constants/constants.js";
+import { dsa_tutor } from "./src/constants/constants.js";
 
 dotenv.config();
 

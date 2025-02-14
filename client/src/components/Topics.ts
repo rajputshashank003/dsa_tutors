@@ -1,5 +1,5 @@
 export const topics : string[] = [
-    "Hashmap",
+    "hashmap",
     "Array",
     "Strings",
     "Bubble Sort",

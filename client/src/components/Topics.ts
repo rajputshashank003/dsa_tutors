@@ -1,11 +1,11 @@
 export const topics : string[] = [
-    "hashmap",
+    "Hashmap",
     "Array",
     "Strings",
-    "Bubble Sort",
-    "Selection Sort",
-    "Inserting Sort",
-    "Selection Sort",
+    "Bubble_Sort",
+    "Selection_Sort",
+    "Inserting_Sort",
+    "Selection_Sort",
     "LinkedList"
 ]
 

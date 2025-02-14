@@ -22,6 +22,13 @@ const genAI = new GoogleGenerativeAI(key);
 // In-memory storage for conversation history
 const conversationHistory = {};
 
+app.get("/" , (req, res) => {
+    res.status(200).json({
+        "success" : "true",
+        "data" : "endpoint working"
+    })
+})
+
 app.post("/dsa_tutor", async (req, res) => {
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");

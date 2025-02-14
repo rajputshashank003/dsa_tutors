@@ -7,7 +7,8 @@ import { dsa_tutor } from "./constants/constants.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+const allowedOrigins = ['https://dsa-tutors.vercel.app'];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 
 const key = process.env.API_GEMINI_AI;

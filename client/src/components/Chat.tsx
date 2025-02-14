@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { v4 as uuidv4 } from 'uuid';
 import TopicTitle from "./TopicTitle";
 import InputPrompt from "./InputPrompt";
-import { backend_local, backend_vercel } from "../utils/backend";
+import { backend_vercel } from "../utils/backend";
 
 interface ChatProps {
     topic: string;

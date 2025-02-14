@@ -1,11 +1,20 @@
 import { useState } from "react"
 
-const InputPrompt = ({handleSendMessage  ,loading}) => {
-    const [text , setText] = useState<string>("");
+
+interface InputPromptProps {
+    handleSendMessage: (message: string) => void;
+    loading: boolean;
+}
+  
+  const InputPrompt: React.FC<InputPromptProps> = ({ handleSendMessage, loading }) => {
+    const [text, setText] = useState("");
+  
     const handleClick = () => {
+      if (text.trim()) {
         handleSendMessage(text);
         setText("");
-    }
+      }
+    };
   return (
     <div className="flex flex-row gap-4 w-full">
         <input 

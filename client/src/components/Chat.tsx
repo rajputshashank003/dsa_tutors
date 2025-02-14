@@ -17,7 +17,7 @@ const Chat: React.FC<ChatProps> = ({ topic }) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [id , setId] = useState<string>(uuidv4());
+    const [id ] = useState<string>(uuidv4());
 
     const chatEndRef = useRef<HTMLDivElement>(null);
 
